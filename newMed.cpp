@@ -37,7 +37,6 @@ class drug{
     char     drugID;
     string   drugName;
 
-    ofstream mylog;
 
 public:
 
@@ -71,9 +70,10 @@ public:
         cout << "[" << drugID << "] " << drugName << endl;
     }
     void out(int x = 0){
-        mylog.open("doseLog");
-        mylog << theTime() << drugName << " " << doses[x-1] << "mg" << endl;
-        mylog.close();
+        ofstream myass;
+        myass.open("doseLog", ios::app);
+        myass << theTime() << drugName << " " << doses[x-1] << "mg" << endl;
+        myass.close();
     }
     //  Constructor
     drug(string nameString, intvect doseVector){
